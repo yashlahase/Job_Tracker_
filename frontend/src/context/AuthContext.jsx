@@ -26,5 +26,46 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
+    const login = async (email, password) => {
+        try {
+            const response = await API.post('/auth/login', { email, password });
+            const { token, ...userData } = response.data;
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userData));
+            setUser(userData);
+
+            return { success: true };
+        } catch (error) {
+            return {
+                success: false,
+                error: error.response?.data?.message || 'Login failed',
+            };
+        }
+    };
+
+    const register = async (name, email, password) => {
+        try {
+            const response = await API.post('/auth/register', { name, email, password });
+            const { token, ...userData } = response.data;
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userData));
+            setUser(userData);
+
+            return { success: true };
+        } catch (error) {
+            return {
+                success: false,
+                error: error.response?.data?.message || 'Registration failed',
+            };
+        }
+    };
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+    };
 
 };
