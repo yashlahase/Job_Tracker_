@@ -28,9 +28,48 @@ const Navbar = () => {
                             JobTracker
                         </span>
                     </Link>
+
+                    {/* Desktop Menu  */}
+                    <div className="nav-menu">
+                        {isAuthenticated ? (
+                            <>
+                                <Link to="/dashboard" className="nav-link">
+                                    Dashboard
+                                </Link>
+                                <Link to="/add-job" className="btn-primary">
+                                    Add Job
+                                </Link>
+                                <div className="nav-actions">
+                                    <div className="user-badge">
+                                        <span className="text-sm font-medium text-white">
+                                            {user?.name?.charAt(0).toUpperCase()}
+                                        </span>
+                                    </div>
+                                    <span className="user-name">{user?.name}</span>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="logout-btn"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="icon-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login" className="nav-link">
+                                    Login
+                                </Link>
+                                <Link to="/register" className="btn-primary">
+                                    Get Started
+                                </Link>
+                            </>
+                        )}
                     </div>
-                    </div>
-            </nav>
+                </div>
+            </div>
+        </nav>
 
         )
 }
