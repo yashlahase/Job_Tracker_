@@ -3,4 +3,38 @@ const Filters = ({ filters, onFilterChange }) => {
         const { name, value } = e.target;
         onFilterChange({ ...filters, [name]: value });
     };
+
+       return (
+        <div className="filter-bar">
+            <div className="grid-filters">
+                {/* Search */}
+                <div className="search-wrapper">
+                    <input
+                        type="text"
+                        name="search"
+                        value={filters.search}
+                        onChange={handleChange}
+                        placeholder="Search company or role..."
+                        className="search-input"
+                    />
+                </div>
+
+                {/* Status Filter */}
+                <div>
+                    <select
+                        name="status"
+                        value={filters.status}
+                        onChange={handleChange}
+                        className="select-field"
+                    >
+                        <option value="all">All Statuses</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+        </div>
+    </div>
+)
 }
