@@ -51,7 +51,25 @@ const Filters = ({ filters, onFilterChange }) => {
                     </select>
                 </div>
 
+            
+                {/* Sort */}
+                <div>
+                    <select
+                        name="sort"
+                        value={filters.sort}
+                        onChange={handleChange}
+                        className="select-field"
+                    >
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="a-z">Company (A-Z)</option>
+                        <option value="z-a">Company (Z-A)</option>
+                    </select>
+                </div>
+
+            </div>
         </div>
-    </div>
-)
-}
+    );
+};
+
+export default Filters;
