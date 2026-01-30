@@ -34,6 +34,23 @@ const Filters = ({ filters, onFilterChange }) => {
                         <option value="Rejected">Rejected</option>
                     </select>
                 </div>
+
+                {/* Job Type Filter */}
+                <div>
+                    <select
+                        name="jobType"
+                        value={filters.jobType}
+                        onChange={handleChange}
+                        className="select-field"
+                    >
+                        <option value="all">All Job Types</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Contract">Contract</option>
+                    </select>
+                </div>
+
         </div>
     </div>
 )
