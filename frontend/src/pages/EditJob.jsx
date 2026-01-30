@@ -67,4 +67,42 @@ const EditJob = () => {
         );
     }
 
-}
+
+        return (
+        <div className="page-container">
+            {/* Header */}
+            <div className="page-header-content">
+                <Link
+                    to="/dashboard"
+                    className="back-link"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Dashboard
+                </Link>
+                <h1 className="heading-primary">Edit Job</h1>
+                <p className="text-description">Update job application details</p>
+            </div>
+
+            {/* Form Card */}
+            <div className="form-card">
+                {error && (
+                    <div className="error-msg-sm">
+                        {error}
+                    </div>
+                )}
+                <JobForm
+                    initialData={job}
+                    onSubmit={handleSubmit}
+                    isLoading={isSaving}
+                    submitLabel="Update Job"
+                />
+            </div>
+        </div>
+    );
+};
+
+export default EditJob;
+
+
