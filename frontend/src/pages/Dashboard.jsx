@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../api/axios';
-
+import StatsCards from '../components/StatsCards';
+import Filters from '../components/Filters';
+import JobCard from '../components/JobCard';
 
 const Dashboard = () => {
     const [jobs, setJobs] = useState([]);
