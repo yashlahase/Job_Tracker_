@@ -66,6 +66,78 @@ const Dashboard = () => {
     } catch (err) {
         alert(err.response?.data?.message || 'Failed to delete job');
     }
+    };
+
+    return (
+        <div className="page-wrapper">
+            {/* Header */}
+            <div className="page-header">
+                <div>
+                    <h1 className="heading-primary">Dashboard</h1>
+                    <p className="text-description">Track and manage your job applications</p>
+                </div>
+                <Link to="/add-job" className="btn-add">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    Add Job
+                </Link>
+            </div>
+
+            {/* Stats Cards */}
+            <StatsCards stats={stats} />
+
+            {/* Filters */}
+            <Filters filters={filters} onFilterChange={setFilters} />
+
+            {/* Error Message */}
+            {error && (
+                <div className="error-msg">
+                    {error}
+                </div>
+            )}
+
+            {/* Loading State */}
+            {isLoading ? (
+                <div className="loading-container-sm">
+                    <div className="spinner"></div>
+                </div>
+            ) : jobs.length === 0 ? (
+                /* Empty State */
+                <div className="empty-state">
+                    <div className="icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon-xl" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h2 className="empty-title">No jobs found</h2>
+                    <p className="empty-description">
+                        {filters.search || filters.status !== 'all' || filters.jobType !== 'all'
+                            ? 'Try adjusting your filters to find jobs'
+                            : 'Start by adding your first job application'}
+                    </p>
+                    {!(filters.search || filters.status !== 'all' || filters.jobType !== 'all') && (
+                        <Link to="/add-job" className="btn-add">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="icon-md" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add Your First Job
+                        </Link>
+                    )}
+                </div>
+            ) : (
+                /* Job List */
+                <div className="job-list">
+                    {jobs.map((job) => (
+                        <JobCard key={job._id} job={job} onDelete={handleDelete} />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 };
 
-}
+export default Dashboard;
+
+
+
