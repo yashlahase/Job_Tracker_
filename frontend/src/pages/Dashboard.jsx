@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import API from '../api/axios';
 
 
 const Dashboard = () => {
@@ -18,5 +19,31 @@ const Dashboard = () => {
     });
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+
+
+    const fetchJobs = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            setError('');
+
+            const params = new URLSearchParams();
+            if (filters.search) params.append('search', filters.search);
+            if (filters.status !== 'all') params.append('status', filters.status);
+            if (filters.jobType !== 'all') params.append('jobType', filters.jobType);
+            if (filters.sort) params.append('sort', filters.sort);
+
+            const response = await API.get(`/jobs?${params.toString()}`);
+            setJobs(response.data.jobs);
+            setStats(response.data.stats);
+        } catch (err) {
+            setError(err.response?.data?.message || 'Failed to fetch jobs');
+        } finally {
+            setIsLoading(false);
+        }
+    }, [filters]);
+
+    useEffect(() => {
+        fetchJobs();
+    }, [fetchJobs]);
 
 }
