@@ -362,3 +362,88 @@ body {
 .job-card-content {
   @apply flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4;
 }
+
+/* Auth pages */
+.auth-header {
+  @apply text-center mb-8;
+}
+
+.auth-title {
+  @apply text-3xl font-bold text-white mb-2;
+}
+
+.auth-subtitle {
+  @apply text-gray-400;
+}
+
+.auth-form {
+  @apply space-y-5;
+}
+
+.auth-footer {
+  @apply mt-6 text-center text-gray-400;
+}
+
+/* Forms */
+.form-group {
+  @apply space-y-6;
+}
+
+.form-actions {
+  @apply flex justify-end;
+}
+
+.form-submit {
+  @apply w-full btn-primary py-3 flex items-center justify-center;
+}
+
+.form-submit-min {
+  @apply btn-primary min-w-[150px] flex items-center justify-center;
+}
+
+.form-spinner {
+  @apply w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin;
+}
+
+/* Grids */
+.grid-stats {
+  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8;
+}
+
+.grid-filters {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.grid-form {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+/* Stats */
+.stat-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.stat-icon {
+  @apply p-2 rounded-lg bg-gradient-to-r;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-white mb-1;
+}
+
+.stat-label {
+  @apply text-sm text-gray-400;
+}
+
+/* Filters */
+.filter-bar {
+  @apply glass-card mb-6;
+}
+
+.search-wrapper {
+  @apply relative;
+}
+
+.search-input {
+  @apply input-field;
+}
