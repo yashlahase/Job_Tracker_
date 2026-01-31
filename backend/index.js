@@ -14,10 +14,11 @@ const app = express();
 // Middleware
 const corsOptions = {
     origin: [
-        process.env.FRONTEND_URL || 'http://localhost:3000',  // Frontend URL from .env
-        'http://localhost:5173',           // Alternative Vite port
+        process.env.FRONTEND_URL || 'http://localhost:3000',
+        'http://localhost:5173',
+        'https://job-tracker-gamma-nine.vercel.app'  // Add your Vercel URL
     ],
-    credentials: true,                   // Allow cookies if needed
+    credentials: true,
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
