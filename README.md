@@ -249,26 +249,6 @@ _Screenshots coming soon..._
 
 ---
 
-## � Building for Production
-
-### **Frontend**
-
-```bash
-cd frontend
-npm run build
-```
-
-This creates an optimized production build in the `dist/` directory.
-
-### **Backend**
-
-The backend doesn't require a build step. For production, use:
-
-```bash
-npm start
-```
-
----
 
 ## 🚢 Deployment
 
