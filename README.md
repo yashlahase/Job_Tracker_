@@ -215,20 +215,6 @@ npm run dev
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots of your application here to showcase the UI
-
-```
-[Dashboard Preview]
-[Add Job Form]
-[Analytics Page]
-```
-
-_Screenshots coming soon..._
-
----
-
 ## 🔑 API Endpoints
 
 ### **Authentication**
